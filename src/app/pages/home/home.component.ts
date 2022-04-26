@@ -9,6 +9,10 @@ import { debounceTime, distinctUntilChanged, fromEvent, map } from 'rxjs';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+
+  defaultUsername = 'erickcu1416';
+  defaultProject = 'socket-server-v2';
+
   @ViewChild('searchInput', { static: true })
   searchInput!: ElementRef;
 
@@ -35,7 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   consult() {
-    this._issueService.getAllIssues().subscribe((d: any) => {
+    this._issueService.getAllIssues(this.defaultUsername, this.defaultProject).subscribe((d: any) => {
       this.issues = d;
       if (this.loading) {
         this.searchHandler('');
@@ -59,5 +63,13 @@ export class HomeComponent implements OnInit {
         x.body.toLowerCase().includes(v) ||
         validLoginPick(x.assignee || {}, v)
     );
+  }
+
+  onChangeRepositoryHandler(event: any) {
+    const {username, repositoryName} = event;
+    this.defaultProject = repositoryName;
+    this.defaultUsername = username;
+    this.loading = true;
+    this.consult();
   }
 }
