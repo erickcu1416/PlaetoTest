@@ -1,0 +1,10 @@
+<mat-list-item>
+  <mat-icon mat-list-icon>info</mat-icon>
+  <div mat-line>{{ i.title }}</div>
+  <div mat-line>{{ i.body }}</div>
+  <div *ngIf="i.assignee" mat-line>
+    <h4>
+      Assigned to: <b>{{ i.assignee.login }}</b>
+    </h4>
+  </div>
+</mat-list-item>

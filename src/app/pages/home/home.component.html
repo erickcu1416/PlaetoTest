@@ -1,0 +1,21 @@
+<div class="outerContainer">
+  <div class="mt-15">
+    <mat-card>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Search Issue</mat-label>
+        <input #searchInput matInput placeholder="Search Issue..." />
+      </mat-form-field>
+    </mat-card>
+  </div>
+
+  <div class="mt-15">
+    <mat-card>
+      <mat-list>
+        <div mat-subheader>Issues</div>
+        <ng-container *ngFor="let i of issuesData">
+          <app-item-list [item]="i"></app-item-list>
+        </ng-container>
+      </mat-list>
+    </mat-card>
+  </div>
+</div>
