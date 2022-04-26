@@ -23,6 +23,8 @@ export class ToolbarComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+
+      // TODO: Esto se puede mejorar con Redux
       this.onChangeRepository.emit(result);
     });
   }
